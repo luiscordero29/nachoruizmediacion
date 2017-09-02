@@ -87,4 +87,10 @@ class Home extends CI_Controller {
 		die('<script>document.forms[0].submit();</script>');
 	}
 
+	public function pdf()
+	{
+        $data['numero'] = 1234568;
+        $this->load->view('home/view_pdf',$data);
+	}
+
 }

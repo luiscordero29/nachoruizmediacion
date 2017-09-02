@@ -62,64 +62,135 @@ $obj_pdf->setFontSubsetting(true);
 // This method has several options, check the source code documentation for more information.
 $obj_pdf->AddPage();
 
-/*
 
-$obj_pdf->Image(base_url().'assets/images/logo.png', '75', '10', 60, 15, '', '', 'T', false, 100, '', false, false, 0, false, false, false);
-$obj_pdf->Ln(20);
-    
+$obj_pdf->Image(base_url().'assets/img/logo.png', '15', '10', 40, 10, '', '', 'T', false, 100, '', false, false, 0, false, false, false);
+$obj_pdf->Ln(10);
 $obj_pdf->SetFont('helvetica', 'B', 12);
-$obj_pdf->Cell(0, 0, 'INFORMACIÓN DEL DEPORTISTA', 0, 1, 'C', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(0, 0, 'OFERTA DE SEGURO DE ACCIDENTES COLECTIVOS 2016/2017', 0, 1, 'C', 0, '', 0,  0, '', 0);
+$obj_pdf->Ln(3);
+$obj_pdf->Cell(0, 0, 'DIRIGIDA A UNIVERSIDAD DE ZARAGOZA, Q5018001G', 0, 1, 'C', 0, '', 0,  0, '', 0);
+$obj_pdf->Ln(5);
+
+$obj_pdf->SetFont('helvetica', '', 10);
+$obj_pdf->Cell(60, 0, '* Cobertura:', 'LTR', 0, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(0, 0, 'Durante la Estancia en Instalaciones Universidad de Zaragoza, ', 'LTR', 1, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(60, 0, '', 'LR', 0, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(0, 0, 'actividades comprendidas dentro del estudio correspondientes y', 'LR', 1, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(60, 0, '', 'LRB', 0, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(0, 0, 'RIESGO IN ITINIRE', 'LRB', 1, 'L', 0, '', 0,  0, '', 0);
+
+$obj_pdf->SetFont('helvetica', 'B', 10);
+$obj_pdf->Cell(0, 0, 'Garantías y Sumas Aseguradas por Persona', 0, 1, 'L', 0, '', 0,  0, '', 0);
+
+$obj_pdf->SetFont('helvetica', '', 10);
+$obj_pdf->Ln(10);
+
+$obj_pdf->Cell(30, 0, '', 0, 0, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(60, 0, 'Fallecimiento Accidental:', 1, 0, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(30, 0, '9.000 €', 1, 0, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(0, 0, '', 0, 1, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Ln(5);
+$obj_pdf->Cell(30, 0, '', 0, 0, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(60, 0, 'Invalidez Permanente Baremo:', 1, 0, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(30, 0, '18.000 €', 1, 0, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(0, 0, '', 0, 1, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Ln(5);
+$obj_pdf->Cell(30, 0, '', 0, 0, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(60, 0, 'Gastos Sanitarios:', 'LRT', 0, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(60, 0, ' Ilimitados en centros concertados', 'LRT', 0, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(0, 0, '', 0, 1, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(30, 0, '', 0, 0, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(60, 0, '', 'LR', 0, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(60, 0, ' en territorio Nacional (Máximo 2', 'LR', 0, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(0, 0, '', 0, 1, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(30, 0, '', 0, 0, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(60, 0, '', 'LRB', 0, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(60, 0, ' años)', 'LRB', 0, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(0, 0, '', 0, 1, 'L', 0, '', 0,  0, '', 0);
 $obj_pdf->Ln(5);
 
 $obj_pdf->SetFont('helvetica', 'B', 10);
-$obj_pdf->Cell(40, 0, 'DNI', 1, 0, 'L', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(60, 0, 'APELLIDOS', 1, 0, 'L', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(0, 0, 'NOMBRES', 1, 1, 'L', 0, '', 0,  0, '', 0);
-
-$obj_pdf->SetFont('helvetica', '', 10);
-$obj_pdf->Cell(40, 0, $row['dni'], 1, 0, 'L', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(60, 0, $row['apellido_1'].' '.$row['apellido_2'], 1, 0, 'L', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(0, 0, $row['nombres'], 1, 1, 'L', 0, '', 0,  0, '', 0);
-
-$obj_pdf->SetFont('helvetica', 'B', 10);
-$obj_pdf->Cell(60, 0, 'FECHA DE NACIMIENTO', 1, 0, 'L', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(0, 0, 'DOMICILIO', 1, 1, 'L', 0, '', 0,  0, '', 0);
-
-$obj_pdf->SetFont('helvetica', '', 10);
-$obj_pdf->Cell(60, 0, date("d/m/Y", strtotime($row['fecha_nacimiento'])), 1, 0, 'L', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(0, 0, $row['direccion'], 1, 1, 'L', 0, '', 0,  0, '', 0);
-
-$obj_pdf->SetFont('helvetica', 'B', 10);
-$obj_pdf->Cell(60, 0, 'SEXO', 1, 0, 'L', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(60, 0, 'FAMILIA NUMEROSA', 1, 0, 'L', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(0, 0, 'AUTORIZACIÓN DE FOTO', 1, 1, 'L', 0, '', 0,  0, '', 0);
-
-$obj_pdf->SetFont('helvetica', '', 10);
-$obj_pdf->Cell(60, 0, $row['sexo'], 1, 0, 'L', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(60, 0, $row['familia'], 1, 0, 'L', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(0, 0, $row['afoto'], 1, 1, 'L', 0, '', 0,  0, '', 0);
-
-$obj_pdf->SetFont('helvetica', 'B', 10);
-$obj_pdf->Cell(70, 0, 'TELÉFONO (TUTOR)', 1, 0, 'L', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(0, 0, 'EMAIL (TUTOR)', 1, 1, 'L', 0, '', 0,  0, '', 0);
-
-$obj_pdf->SetFont('helvetica', '', 10);
-$obj_pdf->Cell(70, 0, $row['telefono_movil'], 1, 0, 'L', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(0, 0, $row['email_principal'], 1, 1, 'L', 0, '', 0,  0, '', 0);
-
-$obj_pdf->SetFont('helvetica', 'B', 10);
-$obj_pdf->Cell(0, 0, 'DEPORTE', 1, 1, 'L', 0, '', 0,  0, '', 0);
-$obj_pdf->SetFont('helvetica', '', 10);
-$obj_pdf->Cell(0, 0, $row['deporte'].' / '.$row['tipo'].': '.$row['valor'], 1, 1, 'L', 0, '', 0,  0, '', 0);
-
-
+$obj_pdf->Cell(80, 0, '', 'LRT', 0, 'C', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(60, 0, '', 'LRT', 0, 'C', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(0, 0, '', 0, 1, 'C', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(80, 0, 'PRIMA NETA POR PERSONA', 'LR', 0, 'C', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(60, 0, '5,20 €', 'LR', 0, 'C', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(0, 0, '', 0, 1, 'C', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(80, 0, '', 'LRB', 0, 'C', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(60, 0, '', 'LRB', 0, 'C', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(0, 0, '', 0, 1, 'C', 0, '', 0,  0, '', 0);
 $obj_pdf->Ln(5);
-if ($row['foto']){
-    $obj_pdf->Image(base_url('assets/uploads/'.$row['foto']), '', '', 45, 60, '', '', 'T', false, 100, '', false, false, 0, false, false, false);
-} */
+
+$obj_pdf->SetFont('helvetica', '', 10);
+$obj_pdf->Cell(0, 0, 'DATOS DE LAS PERSONA A ASEGURAR', 0, 1, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(0, 0, 'NOMBRES Y APELLIDOS: ', 1, 1, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(60, 0, 'FECHA DE NACIMIENTO: ', 1, 0, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(60, 0, 'NIF: ', 1, 0, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(0, 0, 'PROFESIÓN: ', 1, 1, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(0, 0, 'DOMICILIO: ', 1, 1, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(60, 0, 'LOCALIDAD: ', 1, 0, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(60, 0, 'C-POSTAL: ', 1, 0, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(0, 0, 'PAIS: ', 1, 1, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(60, 0, 'PROVINCIA: ', 1, 0, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(60, 0, 'TELÉFONO: ', 1, 0, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(0, 0, 'OTRO TFNO.: ', 1, 1, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(60, 0, 'ESTADO CIVIL: ', 1, 0, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(40, 0, 'SEXO: ', 1, 0, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(0, 0, 'E-MAIL: ', 1, 1, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Ln(5);
+
+
+$obj_pdf->Cell(40, 0, '', 'LTR', 0, 'C', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(0, 0, '(   ) El cónyugue, en su defecto los hijos, en su defecto los padres, y en su defecto los', 1, 1, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(40, 0, '', 'LR', 0, 'C', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(0, 0, ' herederos legales (esta designación será la que aparezca en caso de  ', 1, 1, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(40, 0, '', 'LR', 0, 'C', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(0, 0, 'ausencia de designación expresa)', 1, 1, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(40, 0, '', 'LR', 0, 'C', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(0, 0, '(   ) Otros ', 1, 1, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(40, 0, ' BENEFICIARIOS ', 'LR', 0, 'C', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(60, 0, ' NOMBRES Y APELLIDOS ', 1, 0, 'C', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(30, 0, ' NIF ', 1, 0, 'C', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(0, 0, ' FECHA DE NACIMIENTO ', 1, 1, 'C', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(40, 0, '', 'LR', 0, 'C', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(60, 0, '', 1, 0, 'C', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(30, 0, '', 1, 0, 'C', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(0, 0, '', 1, 1, 'C', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(40, 0, '', 'LR', 0, 'C', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(60, 0, '', 1, 0, 'C', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(30, 0, '', 1, 0, 'C', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(0, 0, '', 1, 1, 'C', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(40, 0, '', 'LR', 0, 'C', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(60, 0, '', 1, 0, 'C', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(30, 0, '', 1, 0, 'C', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(0, 0, '', 1, 1, 'C', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(40, 0, '', 'LBR', 0, 'C', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(60, 0, '', 1, 0, 'C', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(30, 0, '', 1, 0, 'C', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(0, 0, '', 1, 1, 'C', 0, '', 0,  0, '', 0);
+$obj_pdf->Ln(5);
+
+
+$obj_pdf->SetFont('helvetica', '', 10);
+$obj_pdf->Cell(0, 0, 'El pago del Seguro se puede efectuar mediante: ', 0, 1, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Ln(1);
+$obj_pdf->Cell(0, 0, 'Transferencia Bancaria a favor de Jose Ignacio Ruiz Cómpes: ES38 2085 8366 8003 3040 1759', 0, 1, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Ln(1);
+$obj_pdf->Cell(0, 0, 'Entidad IBERCAJA', 0, 1, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Ln(1);
+$obj_pdf->Cell(0, 0, 'Ingreso Directo en misma cuenta.', 0, 1, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Ln(5);
+$obj_pdf->Cell(0, 0, 'Una ve recibida la solicitud debidamente cumplimentada y copia del pago efectuado, se expedirá', 0, 1, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Ln(1);
+$obj_pdf->Cell(0, 0, 'certificado en un máximo de 48 horas.', 0, 1, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Ln(1);
+$obj_pdf->Cell(0, 0, 'Por favor enviar datos a mjroble@mapfre.com', 0, 1, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Ln(1);
+$obj_pdf->Cell(0, 0, 'Teléfono: 636 78 78 15 para cualquier duda.', 0, 1, 'L', 0, '', 0,  0, '', 0);
+
 // Close and output PDF document
 // This method has several options, check the source code documentation for more information.*/
-$obj_pdf->Output('CONRTRATO-'.$row['n_contrato'].'.pdf', 'I');
+$obj_pdf->Output('CONRTRATO-'.$numero.'.pdf', 'I');
 
 //============================================================+
 // END OF FILE
