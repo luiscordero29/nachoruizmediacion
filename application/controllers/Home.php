@@ -23,6 +23,8 @@ class Home extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('home_model');
+		$this->load->helper('pdf_helper');
+		$this->load->helper('download');
 	}
 
 	public function index()
@@ -57,12 +59,12 @@ class Home extends CI_Controller {
 		if ($this->form_validation->run() == FALSE){
 			$this->load->view('home/view_index');
         }else{
-        	$numero = $this->home_model->contratar_serguro();
+        	$data = $this->home_model->contratar_serguro();
+            $this->load->view('home/view_pdf',$data);
 			$fp_cash = $this->input->post('fp_cash');
 			if ($fp_cash == 'card') {
-				$this->tpv($numero);
+				$this->tpv($data['numero']);
 			}
-            $this->load->view('home/view_index');
         }
 	}
 
@@ -81,7 +83,8 @@ class Home extends CI_Controller {
 		    'URL_OK' 			=> 'http://www.nachoruizmediacion.es/',
 		    'URL_NOK' 			=> 'http://www.nachoruizmediacion.es/'
 		));
-		echo '<form action="'.$TPV->getPath().'" method="post">'.$TPV->getFormHiddens().'</form>';
+		echo '<form target="_blank" action="'.$TPV->getPath().'" method="post">'.$TPV->getFormHiddens().'</form>';
 		die('<script>document.forms[0].submit();</script>');
 	}
+
 }
