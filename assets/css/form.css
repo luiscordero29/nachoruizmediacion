@@ -1,0 +1,88 @@
+#contratar .row{
+	//background-color: blue;
+}
+#contratar .row .col-md-12{
+//	background-color: olive;
+}
+
+form{
+	width: 65%;
+	margin: 0 auto;
+	font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
+}
+form .input-field{
+	margin: .5% 0;
+	padding: 2% 0;
+	vertical-align: top !important;
+}
+form .input-field label{
+	font-size: .9em;
+	display: block;
+	color: #F05F40;
+	text-transform: uppercase;
+	font-weight: bold;
+	font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
+}
+form .input-field label i{
+	font-size: 1em;
+	color: #999;
+}
+form .input-field input{
+	width: 100%;
+	padding: 5px;
+	color: #999;
+}
+
+form .input-field input[type="date"]{
+	margin-top: -4px;
+	padding: 4px;
+}
+form hr{
+	max-width: 60% !important;
+	background-color: red;
+}
+#radios div{
+	width: 25%;
+}
+
+#radios div .radio{
+
+}
+
+.radio label{
+	display: inline-block !important;
+	color: #999 !important;
+}
+
+form p{
+	font-size: .9em;
+}
+
+
+.bene div{
+	width: 50% !important;
+}
+.bene div .radio{
+	width: 100% !important;
+}
+
+.bene div .radio input{
+}
+.bene div .radio label{
+	display: block;
+	margin-top: 5%; 
+}
+
+
+
+.fp div{
+	width: 50% !important;
+	//background-color: red;
+}
+.fp div .radio{
+	width: 100% !important;
+}
+
+.fp div .radio input{
+	width: 15%;
+}
