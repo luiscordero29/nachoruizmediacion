@@ -24,7 +24,6 @@ class Home extends CI_Controller {
 		parent::__construct();
 		$this->load->model('home_model');
 		$this->load->helper('pdf_helper');
-		$this->load->helper('download');
 	}
 
 	public function index()
