@@ -60,37 +60,36 @@ class Home extends CI_Controller {
 			$this->load->view('home/view_index');
         }else{
         	$data = $this->home_model->contratar_serguro();
-            $this->load->view('home/view_pdf',$data);
-			$fp_cash = $this->input->post('fp_cash');
-			if ($fp_cash == 'card') {
-				$this->tpv($data['numero']);
-			}
+            redirect('home/tpv/'.$data['numero'], 'refresh');
         }
 	}
 
 	public function tpv($numero)
 	{
-		
-		$this->load->helper('ceca_config');
-		$this->load->helper('ceca');
-		$config = ceca_config();
-		$TPV = new Ceca\Tpv\Tpv($config);
-		# Indicamos los campos para el pedido
-		$TPV->setFormHiddens(array(
-		    'Num_operacion' 	=> $numero,
-		    'Descripcion' 		=> 'Contratar Seguro N'.$numero,
-		    'Importe' 			=> '5,66',
-		    'URL_OK' 			=> 'http://www.nachoruizmediacion.es/',
-		    'URL_NOK' 			=> 'http://www.nachoruizmediacion.es/'
-		));
-		echo '<form target="_blank" action="'.$TPV->getPath().'" method="post">'.$TPV->getFormHiddens().'</form>';
-		die('<script>document.forms[0].submit();</script>');
-	}
-
-	public function pdf()
-	{
-        $data['numero'] = 1234568;
-        $this->load->view('home/view_pdf',$data);
+		$data = $this->home_model->contrato($numero);
+		if (!empty($data)) {
+			if ($data['fp_cash'] == 'card' and $data['estatus'] == 0) {
+				$this->home_model->contrato_estatus($numero);
+				$this->load->helper('ceca_config');
+				$this->load->helper('ceca');
+				$config = ceca_config();
+				$TPV = new Ceca\Tpv\Tpv($config);
+				# Indicamos los campos para el pedido
+				$TPV->setFormHiddens(array(
+				    'Num_operacion' 	=> $numero,
+				    'Descripcion' 		=> 'Contratar Seguro N'.$numero,
+				    'Importe' 			=> '5,66',
+				    'URL_OK' 			=> site_url('home/tpv/'.$numero),
+				    'URL_NOK' 			=> site_url('home/tpv/'.$numero),
+				));
+				echo '<form target="_blank" action="'.$TPV->getPath().'" method="post">'.$TPV->getFormHiddens().'</form>';
+				die('<script>document.forms[0].submit();</script>');
+			}else{
+				$this->load->view('home/view_pdf',$data);
+			}
+		}else{
+			redirect('home/index', 'refresh');
+		}
 	}
 
 }

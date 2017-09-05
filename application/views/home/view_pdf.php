@@ -1,5 +1,4 @@
 <?php
-
 tcpdf();  
 // create new PDF document
 class MYPDF extends TCPDF {
@@ -62,7 +61,6 @@ $obj_pdf->setFontSubsetting(true);
 // This method has several options, check the source code documentation for more information.
 $obj_pdf->AddPage();
 
-
 $obj_pdf->Image(base_url().'assets/img/logo.png', '15', '10', 40, 10, '', '', 'T', false, 100, '', false, false, 0, false, false, false);
 $obj_pdf->Ln(10);
 $obj_pdf->SetFont('helvetica', 'B', 12);
@@ -123,22 +121,21 @@ $obj_pdf->Ln(5);
 
 $obj_pdf->SetFont('helvetica', '', 10);
 $obj_pdf->Cell(0, 0, 'DATOS DE LAS PERSONA A ASEGURAR', 0, 1, 'L', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(0, 0, 'NOMBRES Y APELLIDOS: ', 1, 1, 'L', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(60, 0, 'FECHA DE NACIMIENTO: ', 1, 0, 'L', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(60, 0, 'NIF: ', 1, 0, 'L', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(0, 0, 'PROFESIÓN: ', 1, 1, 'L', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(0, 0, 'DOMICILIO: ', 1, 1, 'L', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(60, 0, 'LOCALIDAD: ', 1, 0, 'L', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(60, 0, 'C-POSTAL: ', 1, 0, 'L', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(0, 0, 'PAIS: ', 1, 1, 'L', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(60, 0, 'PROVINCIA: ', 1, 0, 'L', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(60, 0, 'TELÉFONO: ', 1, 0, 'L', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(0, 0, 'OTRO TFNO.: ', 1, 1, 'L', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(60, 0, 'ESTADO CIVIL: ', 1, 0, 'L', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(40, 0, 'SEXO: ', 1, 0, 'L', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(0, 0, 'E-MAIL: ', 1, 1, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(0, 0, 'NOMBRES Y APELLIDOS: '.$name, 1, 1, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(60, 0, 'FECHA DE NACIMIENTO: '.$date, 1, 0, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(60, 0, 'NIF: '.$nif, 1, 0, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(0, 0, 'PROFESIÓN: '.$profesion, 1, 1, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(0, 0, 'DOMICILIO: '.$domicilio, 1, 1, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(60, 0, 'LOCALIDAD: '.$localidad, 1, 0, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(60, 0, 'C-POSTAL: '.$codigo_postal, 1, 0, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(0, 0, 'PAIS: '.$pais, 1, 1, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(60, 0, 'PROVINCIA: '.$provincia, 1, 0, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(60, 0, 'TELÉFONO: '.$telefono, 1, 0, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(0, 0, 'OTRO TFNO.: '.$otro_telefono, 1, 1, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(60, 0, 'ESTADO CIVIL: '.$edo_civil, 1, 0, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(40, 0, 'SEXO: '.$sexo, 1, 0, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(0, 0, 'E-MAIL: '.$email, 1, 1, 'L', 0, '', 0,  0, '', 0);
 $obj_pdf->Ln(5);
-
 
 $obj_pdf->Cell(40, 0, '', 'LTR', 0, 'C', 0, '', 0,  0, '', 0);
 $obj_pdf->Cell(0, 0, '(   ) El cónyugue, en su defecto los hijos, en su defecto los padres, y en su defecto los', 1, 1, 'L', 0, '', 0,  0, '', 0);
@@ -153,23 +150,22 @@ $obj_pdf->Cell(60, 0, ' NOMBRES Y APELLIDOS ', 1, 0, 'C', 0, '', 0,  0, '', 0);
 $obj_pdf->Cell(30, 0, ' NIF ', 1, 0, 'C', 0, '', 0,  0, '', 0);
 $obj_pdf->Cell(0, 0, ' FECHA DE NACIMIENTO ', 1, 1, 'C', 0, '', 0,  0, '', 0);
 $obj_pdf->Cell(40, 0, '', 'LR', 0, 'C', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(60, 0, '', 1, 0, 'C', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(30, 0, '', 1, 0, 'C', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(0, 0, '', 1, 1, 'C', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(60, 0, ''.$name_bene_1, 1, 0, 'C', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(30, 0, ''.$nif_bene_1, 1, 0, 'C', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(0, 0, ''.$date_bene_1, 1, 1, 'C', 0, '', 0,  0, '', 0);
 $obj_pdf->Cell(40, 0, '', 'LR', 0, 'C', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(60, 0, '', 1, 0, 'C', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(30, 0, '', 1, 0, 'C', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(0, 0, '', 1, 1, 'C', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(60, 0, ''.$name_bene_2, 1, 0, 'C', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(30, 0, ''.$nif_bene_2, 1, 0, 'C', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(0, 0, ''.$date_bene_2, 1, 1, 'C', 0, '', 0,  0, '', 0);
 $obj_pdf->Cell(40, 0, '', 'LR', 0, 'C', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(60, 0, '', 1, 0, 'C', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(30, 0, '', 1, 0, 'C', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(0, 0, '', 1, 1, 'C', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(60, 0, ''.$name_bene_3, 1, 0, 'C', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(30, 0, ''.$nif_bene_3, 1, 0, 'C', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(0, 0, ''.$date_bene_3, 1, 1, 'C', 0, '', 0,  0, '', 0);
 $obj_pdf->Cell(40, 0, '', 'LBR', 0, 'C', 0, '', 0,  0, '', 0);
 $obj_pdf->Cell(60, 0, '', 1, 0, 'C', 0, '', 0,  0, '', 0);
 $obj_pdf->Cell(30, 0, '', 1, 0, 'C', 0, '', 0,  0, '', 0);
 $obj_pdf->Cell(0, 0, '', 1, 1, 'C', 0, '', 0,  0, '', 0);
 $obj_pdf->Ln(5);
-
 
 $obj_pdf->SetFont('helvetica', '', 10);
 $obj_pdf->Cell(0, 0, 'El pago del Seguro se puede efectuar mediante: ', 0, 1, 'L', 0, '', 0,  0, '', 0);
@@ -195,6 +191,4 @@ $obj_pdf->Output('CONRTRATO-'.$numero.'.pdf', 'I');
 //============================================================+
 // END OF FILE
 //============================================================+
-
-
 ?>

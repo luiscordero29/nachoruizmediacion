@@ -35,6 +35,16 @@ class Home_model extends CI_Model {
 			$data['date_bene_1'] 		= $this->input->post('date_bene_1');
 			$data['date_bene_2'] 		= $this->input->post('date_bene_2');
 			$data['date_bene_3'] 		= $this->input->post('date_bene_3');
+		}else{
+			$data['name_bene_1'] 		= '';
+			$data['name_bene_2'] 		= '';
+			$data['name_bene_3'] 		= '';
+			$data['nif_bene_1'] 		= '';
+			$data['nif_bene_2'] 		= '';
+			$data['nif_bene_3'] 		= '';
+			$data['date_bene_1'] 		= '';
+			$data['date_bene_2'] 		= '';
+			$data['date_bene_3'] 		= '';
 		}
 		$data['fp_cash'] = $this->input->post('fp_cash');
 
@@ -78,7 +88,7 @@ class Home_model extends CI_Model {
 				$message .= 'Forma de Pago: Tarjeta '. "\n" ;
 				break;
 		}
-
+		
 		$this->email->from($data['email'], $data['name']);
 		$this->email->to('info@nachoruizmediacion.es');
 		$this->email->cc($data['email']);
@@ -88,8 +98,58 @@ class Home_model extends CI_Model {
 		$this->email->message($message);
 		$this->email->send();
 
+		$data_insert = array(
+		   'numero' 		=> $data['numero'],
+		   'name' 			=> $data['name'],
+		   'nif' 			=> $data['nif'],
+		   'date' 			=> $data['date'],
+		   'profesion' 		=> $data['profesion'],
+		   'domicilio' 		=> $data['domicilio'],
+		   'localidad' 		=> $data['localidad'],
+		   'codigo_postal' 	=> $data['codigo_postal'],
+		   'pais' 			=> $data['pais'],
+		   'provincia' 		=> $data['provincia'],
+		   'telefono' 		=> $data['telefono'],
+		   'otro_telefono' 	=> $data['otro_telefono'],
+		   'email' 			=> $data['email'],
+		   'edo_civil' 		=> $data['edo_civil'],
+		   'sexo' 			=> $data['sexo'],
+		   'beneficiarios' 	=> $data['beneficiarios'],
+		   'name_bene_1' 	=> $data['name_bene_1'],
+		   'name_bene_2' 	=> $data['name_bene_2'],
+		   'name_bene_3' 	=> $data['name_bene_3'],
+		   'nif_bene_1' 	=> $data['nif_bene_1'],
+		   'nif_bene_2' 	=> $data['nif_bene_2'],
+		   'nif_bene_3' 	=> $data['nif_bene_3'],
+		   'date_bene_1' 	=> $data['date_bene_1'],
+		   'date_bene_2' 	=> $data['date_bene_2'],
+		   'date_bene_3' 	=> $data['date_bene_3'],
+		   'fp_cash' 		=> $data['fp_cash'],
+		);
+
+		$this->db->insert('contratos', $data_insert);
+
 		return $data;
 
+	}
+
+	function contrato($numero)
+	{			    
+	    $query = $this->db->get_where('contratos', array('numero' => $numero));	    
+	    if($query->num_rows() > 0){	      
+	      return $query->row_array();
+	    }else{
+	      return false;
+	    }
+	}
+
+	function contrato_estatus($numero)
+	{			       	
+	   	$data = array(
+		   'estatus' 	=> '1',
+		);
+	    $this->db->where('numero', $numero);
+		$this->db->update('contratos', $data); 
 	}
 
 }

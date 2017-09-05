@@ -1,5 +1,6 @@
 .DS_Store
 application/config/email.php
+application/config/database.php
 application/helpers/ceca_config_helper.php
 application/cache/*
 !application/cache/index.html
