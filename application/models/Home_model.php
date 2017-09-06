@@ -88,10 +88,17 @@ class Home_model extends CI_Model {
 				$message .= 'Forma de Pago: Tarjeta '. "\n" ;
 				break;
 		}
-		
-		$this->email->from($data['email'], $data['name']);
+
+		$this->email->from('info@nachoruizmediacion.es', 'Nacho Ruiz Compés');
+		$this->email->to($data['email']);
+		$this->email->subject('Contratar Seguro N'.$data['numero']);
+		$this->email->message($message);
+		$this->email->send();
+
+		$message .= 'Descargar PDF: ' . site_url('home/pdf/'.$data['numero']) . "\n" ;
+
+		$this->email->from('info@nachoruizmediacion.es', 'Nacho Ruiz Compés');
 		$this->email->to('info@nachoruizmediacion.es');
-		$this->email->cc($data['email']);
 		$this->email->bcc('miguel@webactual.com');
 		$this->email->bcc('info@luiscordero29.com');
 		$this->email->subject('Contratar Seguro N'.$data['numero']);

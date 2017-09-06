@@ -33,6 +33,13 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <!-- This is what you need -->
+    <script src="<?php echo base_url(); ?>assets/vendor/sweetalert2/sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/vendor/sweetalert2/sweetalert2.min.css">
+
+    <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+
 </head>
 
 <body id="page-top">
@@ -119,7 +126,7 @@
                     <?php echo validation_errors('<div class="alert alert-danger">','</div>'); ?> 
                     <?php 
                       $at = array('id' => 'forms' );
-                      echo form_open('',$at); 
+                      echo form_open('home/index',$at); 
                     ?>
                         <div class="row">
                            <div class="col-md-12">
@@ -211,9 +218,9 @@
                            <div class="col-md-4">
                                <div class="input-field">
                                    <label for="otro_telefono">
-                                        Otro teléfono <i class="fa fa-asterisk"></i>
+                                        Otro teléfono
                                     </label>
-                                   <input type="text" id="otro_telefono" name="otro_telefono" required onkeypress="return valida(event)" value="<?php echo set_value('otro_telefono'); ?>">
+                                   <input type="text" id="otro_telefono" name="otro_telefono" onkeypress="return valida(event)" value="<?php echo set_value('otro_telefono'); ?>">
                                </div>
                            </div>
                        </div>
@@ -429,25 +436,33 @@
     <!-- Theme JavaScript -->
     <script src="<?php echo base_url(); ?>assets/js/creative.min.js"></script>
     <script>
-      function valida(e){
-          tecla = (document.all) ? e.keyCode : e.which;          
-          patron =/^([0-9])*[-]?[0-9]*$/;
-          tecla_final = String.fromCharCode(tecla);
-          return patron.test(tecla_final);
-      }
-      function input_no_required(){
-        document.getElementById("name_bene_1").removeAttribute("required");
-        document.getElementById("nif_bene_1").removeAttribute("required");
-        document.getElementById("date_bene_1").removeAttribute("required");
-        document.getElementById("data_bene").setAttribute("style", "display:none"); 
-      }
-      function input_required(){
-        document.getElementById("name_bene_1").setAttribute("required", ""); 
-        document.getElementById("nif_bene_1").setAttribute("required", ""); 
-        document.getElementById("date_bene_1").setAttribute("required", ""); 
-        document.getElementById("data_bene").removeAttribute("style");
-      }
+        function valida(e){
+            tecla = (document.all) ? e.keyCode : e.which;          
+            patron =/^([0-9])*[-]?[0-9]*$/;
+            tecla_final = String.fromCharCode(tecla);
+            return patron.test(tecla_final);
+        }
+        function input_no_required(){
+            document.getElementById("name_bene_1").removeAttribute("required");
+            document.getElementById("nif_bene_1").removeAttribute("required");
+            document.getElementById("date_bene_1").removeAttribute("required");
+            document.getElementById("data_bene").setAttribute("style", "display:none"); 
+        }
+        function input_required(){
+            document.getElementById("name_bene_1").setAttribute("required", ""); 
+            document.getElementById("nif_bene_1").setAttribute("required", ""); 
+            document.getElementById("date_bene_1").setAttribute("required", ""); 
+            document.getElementById("data_bene").removeAttribute("style");
+        }
+        <?php if ($swal): ?>
+        swal(
+            'Proceso Exitoso!',
+            'Hacer la transferencia bancaria y enviar el justificante al correo info@nachoruizmediacion.es',
+            'success'
+        );
+        <?php endif; ?>
     </script>
+
 
 </body>
 

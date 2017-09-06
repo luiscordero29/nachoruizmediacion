@@ -122,8 +122,8 @@ $obj_pdf->Ln(5);
 $obj_pdf->SetFont('helvetica', '', 10);
 $obj_pdf->Cell(0, 0, 'DATOS DE LAS PERSONA A ASEGURAR', 0, 1, 'L', 0, '', 0,  0, '', 0);
 $obj_pdf->Cell(0, 0, 'NOMBRES Y APELLIDOS: '.$name, 1, 1, 'L', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(60, 0, 'FECHA DE NACIMIENTO: '.$date, 1, 0, 'L', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(60, 0, 'NIF: '.$nif, 1, 0, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(70, 0, 'FECHA DE NACIMIENTO: '.$date, 1, 0, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(50, 0, 'NIF: '.$nif, 1, 0, 'L', 0, '', 0,  0, '', 0);
 $obj_pdf->Cell(0, 0, 'PROFESIÓN: '.$profesion, 1, 1, 'L', 0, '', 0,  0, '', 0);
 $obj_pdf->Cell(0, 0, 'DOMICILIO: '.$domicilio, 1, 1, 'L', 0, '', 0,  0, '', 0);
 $obj_pdf->Cell(60, 0, 'LOCALIDAD: '.$localidad, 1, 0, 'L', 0, '', 0,  0, '', 0);
@@ -133,18 +133,26 @@ $obj_pdf->Cell(60, 0, 'PROVINCIA: '.$provincia, 1, 0, 'L', 0, '', 0,  0, '', 0);
 $obj_pdf->Cell(60, 0, 'TELÉFONO: '.$telefono, 1, 0, 'L', 0, '', 0,  0, '', 0);
 $obj_pdf->Cell(0, 0, 'OTRO TFNO.: '.$otro_telefono, 1, 1, 'L', 0, '', 0,  0, '', 0);
 $obj_pdf->Cell(60, 0, 'ESTADO CIVIL: '.$edo_civil, 1, 0, 'L', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(40, 0, 'SEXO: '.$sexo, 1, 0, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(30, 0, 'SEXO: '.$sexo, 1, 0, 'L', 0, '', 0,  0, '', 0);
 $obj_pdf->Cell(0, 0, 'E-MAIL: '.$email, 1, 1, 'L', 0, '', 0,  0, '', 0);
 $obj_pdf->Ln(5);
 
 $obj_pdf->Cell(40, 0, '', 'LTR', 0, 'C', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(0, 0, '(   ) El cónyugue, en su defecto los hijos, en su defecto los padres, y en su defecto los', 1, 1, 'L', 0, '', 0,  0, '', 0);
+if ($beneficiarios == 'conyugue') {
+    $obj_pdf->Cell(0, 0, '( X ) El cónyugue, en su defecto los hijos, en su defecto los padres, y en su defecto los', 1, 1, 'L', 0, '', 0,  0, '', 0);
+}else{
+    $obj_pdf->Cell(0, 0, '(   ) El cónyugue, en su defecto los hijos, en su defecto los padres, y en su defecto los', 1, 1, 'L', 0, '', 0,  0, '', 0);
+}
 $obj_pdf->Cell(40, 0, '', 'LR', 0, 'C', 0, '', 0,  0, '', 0);
 $obj_pdf->Cell(0, 0, ' herederos legales (esta designación será la que aparezca en caso de  ', 1, 1, 'L', 0, '', 0,  0, '', 0);
 $obj_pdf->Cell(40, 0, '', 'LR', 0, 'C', 0, '', 0,  0, '', 0);
 $obj_pdf->Cell(0, 0, 'ausencia de designación expresa)', 1, 1, 'L', 0, '', 0,  0, '', 0);
 $obj_pdf->Cell(40, 0, '', 'LR', 0, 'C', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(0, 0, '(   ) Otros ', 1, 1, 'L', 0, '', 0,  0, '', 0);
+if ($beneficiarios == 'otros') {
+    $obj_pdf->Cell(0, 0, '( X ) Otros ', 1, 1, 'L', 0, '', 0,  0, '', 0);
+}else{
+    $obj_pdf->Cell(0, 0, '(   ) Otros ', 1, 1, 'L', 0, '', 0,  0, '', 0);
+}
 $obj_pdf->Cell(40, 0, ' BENEFICIARIOS ', 'LR', 0, 'C', 0, '', 0,  0, '', 0);
 $obj_pdf->Cell(60, 0, ' NOMBRES Y APELLIDOS ', 1, 0, 'C', 0, '', 0,  0, '', 0);
 $obj_pdf->Cell(30, 0, ' NIF ', 1, 0, 'C', 0, '', 0,  0, '', 0);

@@ -42,7 +42,7 @@ class Home extends CI_Controller {
 		$this->form_validation->set_rules('email', 'E-mail', 'trim|required|valid_email');
 		$this->form_validation->set_rules('edo_civil', 'Estado Civil', 'trim|required');
 		$this->form_validation->set_rules('sexo', 'Sexo', 'trim|required');
-		$this->form_validation->set_rules('beneficiarios', 'Sexo', 'trim|required');
+		$this->form_validation->set_rules('beneficiarios', 'Beneficiarios', 'trim|required');
 		if (set_value('beneficiarios') == 'otros'){
 			$this->form_validation->set_rules('name_bene_1', 'Nombre y Apellidos del Beneficiario', 'trim|required');
 			$this->form_validation->set_rules('name_bene_2', 'Nombre y Apellidos del Beneficiario', 'trim');
@@ -56,7 +56,8 @@ class Home extends CI_Controller {
 		}
 		$this->form_validation->set_rules('fp_cash', 'Sexo', 'trim|required');
 		if ($this->form_validation->run() == FALSE){
-			$this->load->view('home/view_index');
+			$data['swal'] = false;
+			$this->load->view('home/view_index',$data);
         }else{
         	$data = $this->home_model->contratar_serguro();
             redirect('home/tpv/'.$data['numero'], 'refresh');
@@ -78,17 +79,29 @@ class Home extends CI_Controller {
 				    'Num_operacion' 	=> $numero,
 				    'Descripcion' 		=> 'Contratar Seguro N'.$numero,
 				    'Importe' 			=> '5,66',
-				    'URL_OK' 			=> site_url('home/tpv/'.$numero),
-				    'URL_NOK' 			=> site_url('home/tpv/'.$numero),
+				    'URL_OK' 			=> site_url('home/pdf/'.$numero),
+				    'URL_NOK' 			=> site_url(),
 				));
 				echo '<form target="_blank" action="'.$TPV->getPath().'" method="post">'.$TPV->getFormHiddens().'</form>';
 				die('<script>document.forms[0].submit();</script>');
 			}else{
-				$this->load->view('home/view_pdf',$data);
+				redirect('home/home', 'refresh');
 			}
 		}else{
 			redirect('home/index', 'refresh');
 		}
+	}
+
+	public function home()
+	{
+		$data['swal'] = true;
+		$this->load->view('home/view_index',$data);
+	}
+
+	public function pdf($numero)
+	{
+		$data = $this->home_model->contrato($numero);
+		$this->load->view('home/view_pdf',$data);
 	}
 
 }
