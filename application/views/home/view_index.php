@@ -456,10 +456,14 @@
         }
         <?php if ($swal): ?>
         swal(
-            'Proceso Exitoso!',
+            'Procesado correctamente!',
             'Hacer la transferencia bancaria y enviar el justificante al correo info@nachoruizmediacion.es',
             'success'
-        );
+        ).then(function () {
+            window.location.replace("<?php echo site_url('home/pdf/'.$numero); ?>");
+        }, function (dismiss) {
+            window.location.replace("<?php echo site_url('home/pdf/'.$numero); ?>");
+        });
         <?php endif; ?>
     </script>
 

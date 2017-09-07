@@ -38,7 +38,7 @@ class Home extends CI_Controller {
 		$this->form_validation->set_rules('pais', 'País', 'trim|required');
 		$this->form_validation->set_rules('provincia', 'Provincia', 'trim|required');
 		$this->form_validation->set_rules('telefono', 'Teléfono', 'trim|required');
-		$this->form_validation->set_rules('otro_telefono', 'Otro teléfono', 'trim|required');
+		$this->form_validation->set_rules('otro_telefono', 'Otro teléfono', 'trim');
 		$this->form_validation->set_rules('email', 'E-mail', 'trim|required|valid_email');
 		$this->form_validation->set_rules('edo_civil', 'Estado Civil', 'trim|required');
 		$this->form_validation->set_rules('sexo', 'Sexo', 'trim|required');
@@ -85,16 +85,17 @@ class Home extends CI_Controller {
 				echo '<form target="_blank" action="'.$TPV->getPath().'" method="post">'.$TPV->getFormHiddens().'</form>';
 				die('<script>document.forms[0].submit();</script>');
 			}else{
-				redirect('home/home', 'refresh');
+				redirect('home/home/'.$numero, 'refresh');
 			}
 		}else{
 			redirect('home/index', 'refresh');
 		}
 	}
 
-	public function home()
+	public function home($numero)
 	{
 		$data['swal'] = true;
+		$data['numero'] = $numero;
 		$this->load->view('home/view_index',$data);
 	}
 
