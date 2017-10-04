@@ -86,3 +86,9 @@ form p{
 .fp div .radio input{
 	width: 15%;
 }
+.terminos {
+	padding: 10px;
+	border: 1px solid #5555;
+	height: 100px;
+	overflow-y: scroll;
+}

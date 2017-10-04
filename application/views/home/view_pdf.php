@@ -21,10 +21,10 @@ class MYPDF extends TCPDF {
 $obj_pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
 $obj_pdf->SetCreator(PDF_CREATOR);
-$obj_pdf->SetAuthor('APP - APA ROSA MOLAS');
-$obj_pdf->SetTitle('INFORMACIÓN DEL DEPORTISTA');
-$obj_pdf->SetSubject('APA ROSA MOLAS');
-$obj_pdf->SetKeywords('APA ROSA MOLAS');
+$obj_pdf->SetAuthor('APP - Nacho Ruiz Compés');
+$obj_pdf->SetTitle('CONTRATO');
+$obj_pdf->SetSubject('Nacho Ruiz Compés');
+$obj_pdf->SetKeywords('Nacho Ruiz Compés');
 
 // set default header data
 $obj_pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE.' 001', PDF_HEADER_STRING, array(0,64,255), array(0,64,128));

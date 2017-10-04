@@ -54,13 +54,29 @@ class Home extends CI_Controller {
 			$this->form_validation->set_rules('date_bene_2', 'Fecha nacimiento del Beneficiario', 'trim');			
 			$this->form_validation->set_rules('date_bene_3', 'Fecha nacimiento del Beneficiario', 'trim');			
 		}
-		$this->form_validation->set_rules('fp_cash', 'Sexo', 'trim|required');
+		$this->form_validation->set_rules('fp_cash', 'Forma de Pago', 'required');
+		$this->form_validation->set_rules('terminos_1', 'Ley de protección de datos', 'required');
+		$this->form_validation->set_rules('terminos_2', 'Autoricen para usar los datos con fines comerciales', 'required');
 		if ($this->form_validation->run() == FALSE){
 			$data['swal'] = false;
 			$this->load->view('home/view_index',$data);
         }else{
-        	$data = $this->home_model->contratar_serguro();
-            redirect('home/tpv/'.$data['numero'], 'refresh');
+        	$data = $this->home_model->registar_contrato();
+        	switch (set_value('fp_cash')) {
+        		case 'transfe':
+        			# pago por transferencia.
+        			$this->home_model->enviar_contrato($data['numero']);
+        			redirect('home/home/'.$data['numero'], 'refresh');
+        			break;
+        		case 'card':
+        			# pago por tarjeta.
+           			redirect('home/tpv/'.$data['numero'], 'refresh');
+        			break;
+        		default:
+        			# error
+        			redirect('home/index', 'refresh');
+        			break;
+        	}
         }
 	}
 
@@ -79,7 +95,7 @@ class Home extends CI_Controller {
 				    'Num_operacion' 	=> $numero,
 				    'Descripcion' 		=> 'Contratar Seguro N'.$numero,
 				    'Importe' 			=> '5,66',
-				    'URL_OK' 			=> site_url('home/pdf/'.$numero),
+				    'URL_OK' 			=> site_url('home/pdf_tpv/'.$numero),
 				    'URL_NOK' 			=> site_url(),
 				));
 				echo '<form target="_blank" action="'.$TPV->getPath().'" method="post">'.$TPV->getFormHiddens().'</form>';
@@ -101,6 +117,19 @@ class Home extends CI_Controller {
 
 	public function pdf($numero)
 	{
+		$data = $this->home_model->contrato($numero);
+		$this->load->view('home/view_pdf',$data);
+	}
+
+	public function pdf_certificado($numero)
+	{
+		$data = $this->home_model->contrato($numero);
+		$this->load->view('home/view_certificado_pdf',$data);
+	}
+
+	public function pdf_tpv($numero)
+	{
+		$this->home_model->enviar_contrato_certificado($numero);
 		$data = $this->home_model->contrato($numero);
 		$this->load->view('home/view_pdf',$data);
 	}
