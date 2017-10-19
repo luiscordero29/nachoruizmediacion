@@ -98,7 +98,7 @@ class Home extends CI_Controller {
 				    'URL_OK' 			=> site_url('home/pdf_tpv/'.$numero),
 				    'URL_NOK' 			=> site_url(),
 				));
-				echo '<form target="_blank" action="'.$TPV->getPath().'" method="post">'.$TPV->getFormHiddens().'</form>';
+				echo '<form action="'.$TPV->getPath().'" method="post">'.$TPV->getFormHiddens().'</form>';
 				die('<script>document.forms[0].submit();</script>');
 			}else{
 				redirect('home/home/'.$numero, 'refresh');
