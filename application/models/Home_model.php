@@ -143,10 +143,7 @@ class Home_model extends CI_Model {
 
 		$this->email->from('info@nachoruizmediacion.es', 'Nacho Ruiz Compés');
 		$this->email->to($data['email']);
-		$this->email->cc('info@nachoruizmediacion.es');
-		$this->email->cc('mjroble@mapfre.com');
-		$this->email->bcc('miguel@webactual.com');
-		$this->email->bcc('info@luiscordero29.com');
+		$this->email->cc('info@nachoruizmediacion.es, mjroble@mapfre.com');
 		$this->email->subject('Contratar Seguro N'.$data['numero']);
 		$this->email->message($message);
 		$this->email->send();
@@ -210,10 +207,7 @@ class Home_model extends CI_Model {
 
 		$this->email->from('info@nachoruizmediacion.es', 'Nacho Ruiz Compés');
 		$this->email->to($data['email']);
-		$this->email->cc('info@nachoruizmediacion.es');
-		$this->email->cc('mjroble@mapfre.com');
-		$this->email->bcc('miguel@webactual.com');
-		$this->email->bcc('info@luiscordero29.com');
+		$this->email->cc('info@nachoruizmediacion.es, mjroble@mapfre.com');
 		$this->email->subject('Contratar Seguro N'.$data['numero']);
 		$this->email->message($message);
 		$this->email->send();
