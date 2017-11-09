@@ -79,7 +79,7 @@ CERTIFICA:
 </p>
 
 <p style="margin-top: 40px; margin-bottom: 40px;line-height: 30px">
-Que <b>UNIVERSIDAD DE ZARAGOZA</b>, con CIF <b>Q5018001G</b> tiene contratada con esta Compañía póliza de seguro colectivo nº <b>'.$numero.'</b>. Que la póliza suscrita es de duración <b>Anual</b>.
+Que <b>UNIVERSIDAD DE ZARAGOZA</b>, con CIF <b>Q5018001G</b> tiene contratada con esta Compañía póliza de seguro colectivo nº <b>0551780159947</b>. Que la póliza suscrita es de duración <b>Anual</b>.
 </p>
 
 <p style="margin-top: 40px; margin-bottom: 40px;line-height: 30px;">
