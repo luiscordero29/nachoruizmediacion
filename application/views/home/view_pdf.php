@@ -64,7 +64,7 @@ $obj_pdf->AddPage();
 $obj_pdf->Image(base_url().'assets/img/logo.png', '15', '10', 40, 10, '', '', 'T', false, 100, '', false, false, 0, false, false, false);
 $obj_pdf->Ln(10);
 $obj_pdf->SetFont('helvetica', 'B', 12);
-$obj_pdf->Cell(0, 0, 'OFERTA DE SEGURO DE ACCIDENTES COLECTIVOS 2016/2017', 0, 1, 'C', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(0, 0, 'OFERTA DE SEGURO DE ACCIDENTES COLECTIVOS 2017/2018', 0, 1, 'C', 0, '', 0,  0, '', 0);
 $obj_pdf->Ln(3);
 $obj_pdf->Cell(0, 0, 'DIRIGIDA A UNIVERSIDAD DE ZARAGOZA, Q5018001G', 0, 1, 'C', 0, '', 0,  0, '', 0);
 $obj_pdf->Ln(5);
