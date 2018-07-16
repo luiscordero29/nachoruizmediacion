@@ -87,7 +87,7 @@ Universitario que forma parte de esta póliza:
 </p>
 
 <p style="line-height: 30px">
-'.$name.' NIF '.$nif.' Y FECHA DE NACIMIENTO '.$date.'.
+'.$name.' CON NIF '.$nif.' Y FECHA DE NACIMIENTO '.$date.'.
 </p>
 
 <p style="margin-top: 40px; margin-bottom: 40px;line-height: 30px;">

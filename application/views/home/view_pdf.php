@@ -64,59 +64,35 @@ $obj_pdf->AddPage();
 $obj_pdf->Image(base_url().'assets/img/logo.png', '15', '10', 40, 10, '', '', 'T', false, 100, '', false, false, 0, false, false, false);
 $obj_pdf->Ln(10);
 $obj_pdf->SetFont('helvetica', 'B', 12);
-$obj_pdf->Cell(0, 0, 'OFERTA DE SEGURO DE ACCIDENTES COLECTIVOS 2017/2018', 0, 1, 'C', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(0, 0, 'OFERTA DE SEGURO DE ACCIDENTES COLECTIVOS 2018/2019', 0, 1, 'C', 0, '', 0,  0, '', 0);
 $obj_pdf->Ln(3);
 $obj_pdf->Cell(0, 0, 'DIRIGIDA A UNIVERSIDAD DE ZARAGOZA, Q5018001G', 0, 1, 'C', 0, '', 0,  0, '', 0);
 $obj_pdf->Ln(5);
 
 $obj_pdf->SetFont('helvetica', '', 10);
-$obj_pdf->Cell(60, 0, '* Cobertura:', 'LTR', 0, 'L', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(0, 0, 'Durante la Estancia en Instalaciones Universidad de Zaragoza, ', 'LTR', 1, 'L', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(60, 0, '', 'LR', 0, 'L', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(0, 0, 'actividades comprendidas dentro del estudio correspondientes y', 'LR', 1, 'L', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(60, 0, '', 'LRB', 0, 'L', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(0, 0, 'RIESGO IN ITINIRE', 'LRB', 1, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(0, 0, '* Cobertura:', 0, 1, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(0, 0, 'Durante la Estancia en Instalaciones Universidad de Zaragoza, actividades comprendidas dentro del estudio ', 0, 1, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(0, 0, 'correspondientes y RIESGO IN ITINIRE', 0, 1, 'L', 0, '', 0,  0, '', 0);
 
 $obj_pdf->SetFont('helvetica', 'B', 10);
-$obj_pdf->Cell(0, 0, 'Garantías y Sumas Aseguradas por Persona', 0, 1, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(40, 0, 'Garantías y Sumas Aseguradas por Persona', 0, 1, 'L', 0, '', 0,  0, '', 0);
 
 $obj_pdf->SetFont('helvetica', '', 10);
 $obj_pdf->Ln(10);
 
-$obj_pdf->Cell(30, 0, '', 0, 0, 'L', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(60, 0, 'Fallecimiento Accidental:', 1, 0, 'L', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(30, 0, '9.000 €', 1, 0, 'L', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(0, 0, '', 0, 1, 'L', 0, '', 0,  0, '', 0);
-$obj_pdf->Ln(5);
-$obj_pdf->Cell(30, 0, '', 0, 0, 'L', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(60, 0, 'Invalidez Permanente Baremo:', 1, 0, 'L', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(30, 0, '18.000 €', 1, 0, 'L', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(0, 0, '', 0, 1, 'L', 0, '', 0,  0, '', 0);
-$obj_pdf->Ln(5);
-$obj_pdf->Cell(30, 0, '', 0, 0, 'L', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(60, 0, 'Gastos Sanitarios:', 'LRT', 0, 'L', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(60, 0, ' Ilimitados en centros concertados', 'LRT', 0, 'L', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(0, 0, '', 0, 1, 'L', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(30, 0, '', 0, 0, 'L', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(60, 0, '', 'LR', 0, 'L', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(60, 0, ' en territorio Nacional (Máximo 2', 'LR', 0, 'L', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(0, 0, '', 0, 1, 'L', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(30, 0, '', 0, 0, 'L', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(60, 0, '', 'LRB', 0, 'L', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(60, 0, ' años)', 'LRB', 0, 'L', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(0, 0, '', 0, 1, 'L', 0, '', 0,  0, '', 0);
-$obj_pdf->Ln(5);
+$obj_pdf->Cell(0, 0, 'Fallecimiento Accidental:', 0, 1, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(0, 0, '9.000 €', 0, 1, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Ln(30);
+$obj_pdf->Cell(0, 0, 'Invalidez Permanente Baremo:', 0, 1, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(0, 0, '18.000 €', 0, 1, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Ln(30);
+$obj_pdf->Cell(0, 0, 'Gastos Sanitarios:', 0, 1, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(0, 0, ' Ilimitados en centros concertados en territorio Nacional (Máximo 2  años)', 0, 1, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Ln(10);
 
 $obj_pdf->SetFont('helvetica', 'B', 10);
-$obj_pdf->Cell(80, 0, '', 'LRT', 0, 'C', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(60, 0, '', 'LRT', 0, 'C', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(0, 0, '', 0, 1, 'C', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(80, 0, 'PRIMA NETA POR PERSONA', 'LR', 0, 'C', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(60, 0, '5,66 €', 'LR', 0, 'C', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(0, 0, '', 0, 1, 'C', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(80, 0, '', 'LRB', 0, 'C', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(60, 0, '', 'LRB', 0, 'C', 0, '', 0,  0, '', 0);
-$obj_pdf->Cell(0, 0, '', 0, 1, 'C', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(0, 0, 'PRIMA NETA POR PERSONA', 0, 1, 'C', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(0, 0, '5,66 €', 0, 1, 'C', 0, '', 0,  0, '', 0);
 $obj_pdf->Ln(5);
 
 $obj_pdf->SetFont('helvetica', '', 10);
@@ -135,7 +111,6 @@ $obj_pdf->Cell(0, 0, 'OTRO TFNO.: '.$otro_telefono, 1, 1, 'L', 0, '', 0,  0, '',
 $obj_pdf->Cell(60, 0, 'ESTADO CIVIL: '.$edo_civil, 1, 0, 'L', 0, '', 0,  0, '', 0);
 $obj_pdf->Cell(30, 0, 'SEXO: '.$sexo, 1, 0, 'L', 0, '', 0,  0, '', 0);
 $obj_pdf->Cell(0, 0, 'E-MAIL: '.$email, 1, 1, 'L', 0, '', 0,  0, '', 0);
-$obj_pdf->Ln(5);
 
 $obj_pdf->Cell(40, 0, '', 'LTR', 0, 'C', 0, '', 0,  0, '', 0);
 if ($beneficiarios == 'conyugue') {
@@ -173,24 +148,21 @@ $obj_pdf->Cell(40, 0, '', 'LBR', 0, 'C', 0, '', 0,  0, '', 0);
 $obj_pdf->Cell(60, 0, '', 1, 0, 'C', 0, '', 0,  0, '', 0);
 $obj_pdf->Cell(30, 0, '', 1, 0, 'C', 0, '', 0,  0, '', 0);
 $obj_pdf->Cell(0, 0, '', 1, 1, 'C', 0, '', 0,  0, '', 0);
-$obj_pdf->Ln(5);
-
 $obj_pdf->SetFont('helvetica', '', 10);
 $obj_pdf->Cell(0, 0, 'El pago del Seguro se puede efectuar mediante: ', 0, 1, 'L', 0, '', 0,  0, '', 0);
 $obj_pdf->Ln(1);
+
+$obj_pdf->AddPage();
+
 $obj_pdf->Cell(0, 0, 'Transferencia Bancaria a favor de Jose Ignacio Ruiz Cómpes: ES38 2085 8366 8003 3040 1759', 0, 1, 'L', 0, '', 0,  0, '', 0);
-$obj_pdf->Ln(1);
 $obj_pdf->Cell(0, 0, 'Entidad IBERCAJA', 0, 1, 'L', 0, '', 0,  0, '', 0);
-$obj_pdf->Ln(1);
 $obj_pdf->Cell(0, 0, 'Ingreso Directo en misma cuenta.', 0, 1, 'L', 0, '', 0,  0, '', 0);
 $obj_pdf->Ln(5);
-$obj_pdf->Cell(0, 0, 'Una ve recibida la solicitud debidamente cumplimentada y copia del pago efectuado, se expedirá', 0, 1, 'L', 0, '', 0,  0, '', 0);
-$obj_pdf->Ln(1);
+$obj_pdf->Cell(0, 0, 'Una vez recibida la solicitud debidamente cumplimentada y copia del pago efectuado, se expedirá', 0, 1, 'L', 0, '', 0,  0, '', 0);
 $obj_pdf->Cell(0, 0, 'certificado en un máximo de 48 horas.', 0, 1, 'L', 0, '', 0,  0, '', 0);
 $obj_pdf->Ln(1);
-$obj_pdf->Cell(0, 0, 'Por favor enviar datos a mjroble@mapfre.com', 0, 1, 'L', 0, '', 0,  0, '', 0);
-$obj_pdf->Ln(1);
-$obj_pdf->Cell(0, 0, 'Teléfono: 636 78 78 15 para cualquier duda.', 0, 1, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(0, 0, 'Por favor enviar datos a mjroble@mapfre.com Teléfono: 636 78 78 15 o nachoruizmediacion@gmail.com', 0, 1, 'L', 0, '', 0,  0, '', 0);
+$obj_pdf->Cell(0, 0, 'Telefono: 653 79 35 49 para cualquier duda.', 0, 1, 'L', 0, '', 0,  0, '', 0);
 
 // Close and output PDF document
 // This method has several options, check the source code documentation for more information.*/

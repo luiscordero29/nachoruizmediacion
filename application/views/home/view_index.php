@@ -82,6 +82,7 @@
 				<h3 id="homeHeading">Nacho Ruiz Compés</h3>
                 <p>Corredor de Seguros<br> Nº Autorizacion DGA F-0122GA - Nº Colegiado: 76032</p>
                 <a href="#about" class="btn btn-primary btn-xl page-scroll">Cobertura</a>
+                <small>Teléfono de Siniestros: 902 136 524 24 horario de entre semana de 10:00 a 20:00.</small>
             </div>
         </div>
     </header>
@@ -711,7 +712,7 @@
                             </p> 
                             </div>
                             <label>
-                              <input type="checkbox" name="terminos_2" value="SI" required> Autorizo mi datos para fines comerciales
+                              <input type="checkbox" name="terminos_2" value="SI" required> Autorizo mi datos para la emisión de esta póliza
                             </label>
                             <p></p>
 
